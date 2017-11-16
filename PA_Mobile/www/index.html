@@ -4,26 +4,40 @@
         <meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
         <title>PA applicatif </title>
+
         <script type="text/javascript">
         	window.onload=function()
         	{
         		document.getElementById('btnCalc').addEventListener('click',calcAge) ;
+        		/*
+        		document.getElementById('btnmultiplication').addEventListener('click',calcMult) ;
+        		*/
         	}
+        	
         	function calcAge(e){
         		var age = document.getElementById('dogAge').value;
         		age = age *7 ;
         		var result = "Age du chien : " + age ;
         		document.getElementById('result').innerHTML = result ;
         	}
+/*
+        	function calcMult(e){
+        		var nb1 document.getElementByName("nom").value ;
+        		var nb2 document.getElementById("dogAge").value ;
+        		var resu document.getElementById("resulMult").innerHTML ;
+        	}
+*/
         </script>
     </head>
+
     <body>
         <script type="text/javascript" src="cordova.js"></script>
         <h1> Ceci est notre application et je fais un changement</h1>
         <label for="dogAge"> Age du chien en age humain </label>
         <input type="number" id="dogAge" > 
-        <br>
+        <br> 
         <button id="btnCalc"> calculer</button>
         <div id="result"></div>
     </body>
+
 </html>
