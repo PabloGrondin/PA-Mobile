@@ -1,9 +1,18 @@
 <!DOCTYPE html>
+<!-- Pour avoir quelques widgets interessant : 
+http://api.jquerymobile.com/selectmenu/                 Liste déroulante ou qui apparait
+http://api.jquerymobile.com/rangeslider/                Avoir des Slider (range)
+http://api.jquerymobile.com/slider/                     A peu pret la meme
+
+ -->
 <html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
         <title>PA applicatif </title>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
         <script type="text/javascript">
         	window.onload=function()
@@ -20,24 +29,111 @@
         		var result = "Age du chien : " + age ;
         		document.getElementById('result').innerHTML = result ;
         	}
-/*
-        	function calcMult(e){
-        		var nb1 document.getElementByName("nom").value ;
-        		var nb2 document.getElementById("dogAge").value ;
-        		var resu document.getElementById("resulMult").innerHTML ;
-        	}
-*/
+            /*
+            $(function(){
+                $("div.box").on("swiperight",swiprightHandler) ;
+                function swiprightHangler(event){
+                    $(event.target).addClass("swiperight") ;
+                    $(event.changePage)
+                    alert('coucou') ;
+                }
+
+            }) ;
+            */
+            $(document).on('swiperight', 'swipeleft',function(event) {
+
+                if (event.type=='swiperight') {
+                    $mobile.changePage(location.href='index.html#page2') ;
+                } else {
+                    $mobile.changePage(location.href='index.html#page1') ;
+                }
+            })   ;
+
         </script>
+        <style type="text/css">
+            #footer 
+            {
+                bottom: 0 ;
+                position: absolute;
+                width: 100% ;
+            }
+        </style>
     </head>
 
     <body>
         <script type="text/javascript" src="cordova.js"></script>
-        <h1> Ceci est notre application et je fais un autre changement</h1>
-        <label for="dogAge"> Age du chien en age humain </label>
-        <input type="number" id="dogAge" > 
-        <br> 
-        <button id="btnCalc"> calculer</button>
-        <div id="result"></div>
+        <div data-role="page" id="page1">
+
+            <div data-role="header"> 
+                <h1> Ceci est notre application et je fais un autre changement</h1>
+            </div> <!-- Header -->
+
+            <div data-role="main" class="ui-content"> 
+                <div class="box">
+                <div data-role="collapsible-set">
+                    <div data-role="collapsible" data-collapsed="false">
+                        <h1>Titre collapse</h1>
+                        <p> Contenu de mon collapse </p>
+                    </div> 
+                    <div data-role="collapsible">s
+                        <h1>Titre collapse 2</h1>
+                        <p> Contenu de mon collapse </p>
+                    </div> 
+
+                </div> <!-- collapsible-set -->
+
+                <label for="dogAge"> Age du chien en age humain </label>
+                <input type="number" id="dogAge" > 
+                <br> 
+                <button id="btnCalc"> calculer</button>
+            </br>
+            <button onclick="location.href='index.html#page2'"> Aller page 2</button>
+                <div id="result"></div>
+            </div> <!-- fin de class box pour swipright, a voir si c'est vraiment utile -->
+            </div> <!-- main -->
+            <div data-role="footer" id="footer">
+                <p> Projet realisé dans le cadre d'un projet universitaire</p>
+
+            </div>
+        </div> <!-- page -->
+
+        <div data-role="page" id="page2">
+
+            <div data-role="header"> 
+                
+                <!-- http://demos.jquerymobile.com/1.5.0-alpha.1/navbar/#&ui-state=dialog -->
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#page1" class="ui-button-active" data-icon="ui-icon-star" icon="ui-icon-clock">Permier item</a></li>
+                        <li><a href="#page1" class="ui-button-active">Deuxieme item</a></li>
+                    </ul>
+                </div>
+            </div> <!-- Header -->
+
+            <div data-role="main" class="ui-content"> 
+                <!-- On peux mettre ce que l'on veut pas que des checkbox--> 
+                <fieldset data-role="controlgroup" data-mini="true"> <!-- data mini est disponible pour tous, c'est pour mettre en plus petit --> 
+                    <legend>Tite du fieldset</legend>
+                    <input type="checkbox" name="bon" id="unid"> 
+                    <label for="unid">Ceci est votre journe</label>
+
+                    <input type="checkbox" name="nom2" id="unid2"> 
+                    <label for="unid2">Ceci est votre 2 eme checkbox</label>
+                    <input type="checkbox" name="nom6" id="unid3"> 
+                    <label for="unid3">Ceci est votre 4 eme idee </label>
+
+                </fieldset> <!-- fieldset  --> 
+                </br> 
+                <button onclick="location.href='index.html'"> retourner page 1</button>
+                <label for="myflip">Switch</label>
+                <input type="checkbox" name="myflip" id="myflip" data-role="flipswitch"/>
+                
+            </div> <!-- main -->
+            <div data-role="footer" id="footer">
+                <p> Projet realisé dans le cadre d'un projet universitaire</p>
+
+            </div>
+        </div> <!-- page -->
     </body>
 
 </html>
